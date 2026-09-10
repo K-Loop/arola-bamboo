@@ -79,6 +79,7 @@ export default function MobileMenu({ isOpen, onClose }) {
           <div className="border-t border-white/10 pt-6 space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <button
+                type="button"
                 onClick={() => {
                   onClose();
                   setIsDrawerOpen(true);
@@ -98,6 +99,17 @@ export default function MobileMenu({ isOpen, onClose }) {
                 <span>WhatsApp Us</span>
               </a>
             </div>
+
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                window.dispatchEvent(new CustomEvent('arola_replay_intro'));
+              }}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-full bg-white/5 text-[#D9B77A] font-semibold text-xs uppercase tracking-widest border border-[#D9B77A]/30 hover:bg-white/10 transition-colors"
+            >
+              <span>▶ Replay Brand Intro Video</span>
+            </button>
 
             <div className="text-[11px] text-sand-300 flex flex-col gap-1 pt-1 opacity-80">
               <p>Madurai - 625016, Tamil Nadu, India • +91 9486755447</p>

@@ -94,6 +94,15 @@ export default function Footer() {
               <li><Link to="/construction" className="hover:text-white transition-colors">Green Construction</Link></li>
               <li><Link to="/training" className="hover:text-white transition-colors">Skills Academy</Link></li>
               <li><Link to="/stories" className="hover:text-white transition-colors">Stories & Journal</Link></li>
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent('arola_replay_intro'))}
+                  className="text-[#D9B77A] hover:underline flex items-center gap-1.5 cursor-pointer pt-1"
+                >
+                  <span>▶ Replay Brand Intro</span>
+                </button>
+              </li>
             </ul>
           </div>
 

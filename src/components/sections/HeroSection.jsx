@@ -1,93 +1,119 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Sparkles, Volume2, VolumeX } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   const containerRef = useRef(null);
   const videoRef = useRef(null);
+  const [isInView, setIsInView] = useState(true);
+  const [isIntroActive, setIsIntroActive] = useState(() => {
+    return typeof window !== 'undefined' && window.__AROLA_INTRO_ACTIVE === true;
+  });
 
+  // 1. Synchronize with Intro Screen to prevent 2 heavy 1080p videos running at the same time
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = true;
-      video.defaultMuted = true;
-      video.loop = true;
-      video.setAttribute('muted', '');
-      video.setAttribute('playsinline', '');
-      video.setAttribute('loop', '');
-      video.setAttribute('autoplay', '');
+    const handleIntroStatus = (e) => {
+      const active = !!(e && e.detail && e.detail.active);
+      setIsIntroActive(active);
+    };
 
-      const startPlayback = () => {
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(() => {});
-        }
-      };
-
-      startPlayback();
-
-      // Handle visibility changes to ensure video loops when tab is active
-      const handleVisibilityChange = () => {
-        if (!document.hidden && video.paused) {
-          video.play().catch(() => {});
-        }
-      };
-
-      document.addEventListener('visibilitychange', handleVisibilityChange);
-      return () => {
-        document.removeEventListener('visibilitychange', handleVisibilityChange);
-      };
-    }
+    window.addEventListener('arola_intro_status', handleIntroStatus);
+    return () => window.removeEventListener('arola_intro_status', handleIntroStatus);
   }, []);
 
+  // 2. IntersectionObserver: Automatically pause video when scrolled off-screen to save 100% GPU
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  // 3. Play/Pause control based on visibility, tab focus & intro status
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
+    video.setAttribute('loop', '');
+
+    const shouldPlay = isInView && !isIntroActive && !document.hidden;
+
+    if (shouldPlay) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    } else {
+      video.pause();
+    }
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        video.pause();
+      } else if (isInView && !isIntroActive) {
+        video.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [isInView, isIntroActive]);
+
+  // 4. Lightweight hardware-accelerated scroll transforms
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
   });
 
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '25%']);
-  const cardY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
+  const cardY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
   return (
     <section
       ref={containerRef}
-      className="relative w-full min-h-[100svh] min-h-[720px] flex items-center overflow-hidden bg-forest-dark text-sand-50 pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28"
+      className="relative w-full min-h-[100svh] min-h-[720px] flex items-center overflow-hidden bg-[#132104] text-sand-50 pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28 will-change-transform transform-gpu"
     >
-      {/* 1. CINEMATIC NATURAL BAMBOO VIDEO BACKGROUND (CONTINUOUS INFINITE LOOP) */}
-      <motion.div
-        style={{ scale: videoScale }}
-        className="absolute inset-0 w-full h-full pointer-events-none select-none z-0"
-      >
+      {/* 1. HARDWARE ACCELERATED BAMBOO VIDEO BACKGROUND */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none select-none z-0 overflow-hidden transform-gpu">
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="auto"
           disablePictureInPicture
-          onEnded={(e) => {
-            e.target.currentTime = 0;
-            e.target.play().catch(() => {});
-          }}
           poster="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1920&q=80"
-          className="w-full h-full object-cover"
-          style={{ filter: 'contrast(1.05) saturate(1.08)' }}
+          className="w-full h-full object-cover transform-gpu scale-[1.02] translate-z-0 will-change-transform"
         >
           <source src="/Bamboo_forest_swaying_in_breeze_202609091651.mp4" type="video/mp4" />
         </video>
 
-        {/* Subtle Dark Gradient from Left Behind Text Only */}
-        <div className="absolute inset-0 subtle-left-gradient" />
+        {/* High-Contrast Luxury Cinematic Color Grading Overlays (Zero GPU overhead) */}
+        <div className="absolute inset-0 bg-[#132104]/30 pointer-events-none" />
+        <div className="absolute inset-0 subtle-left-gradient pointer-events-none" />
+        <div className="absolute inset-0 hero-vignette opacity-85 pointer-events-none" />
 
-        {/* Soft Vignette around Edges */}
-        <div className="absolute inset-0 hero-vignette opacity-80" />
-
-        {/* Top and Bottom Delicate Feathering */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-forest-dark/70 to-transparent" />
-        <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-forest-dark/90 via-forest-dark/40 to-transparent" />
-      </motion.div>
+        {/* Top and Bottom Feathering */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#132104]/80 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-[#132104] via-[#132104]/50 to-transparent pointer-events-none" />
+      </div>
 
       {/* 2. HERO CONTENT CONTAINER */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -96,14 +122,14 @@ export default function HeroSection() {
           {/* LEFT EDITORIAL COLUMN (7 cols) */}
           <motion.div
             style={{ y: textY }}
-            initial={{ opacity: 0, y: 35 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 space-y-6 sm:space-y-8"
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6 sm:space-y-8 will-change-transform"
           >
             {/* Small Eyebrow */}
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full glass-pill-dark text-warm-bamboo text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-warm-bamboo animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-warm-bamboo animate-pulse" />
               <span>Crafted by Nature • Made in Madurai</span>
             </div>
 
@@ -143,10 +169,10 @@ export default function HeroSection() {
           {/* RIGHT ASYMMETRIC FLOATING CARD (5 cols) */}
           <motion.div
             style={{ y: cardY }}
-            initial={{ opacity: 0, scale: 0.94 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 relative mt-4 lg:mt-0"
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative mt-4 lg:mt-0 will-change-transform"
           >
             <div className="glass-pill-dark rounded-3xl p-6 sm:p-7 border border-white/20 shadow-luxury space-y-5 max-w-md mx-auto lg:ml-auto">
               {/* Product Spotlight Image */}
@@ -154,9 +180,10 @@ export default function HeroSection() {
                 <img
                   src="https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&w=800&q=80"
                   alt="Arola Bamboo Craft Studio"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-forest-dark/80 via-transparent to-transparent pointer-events-none" />
                 <span className="absolute bottom-3 left-3 text-[10px] font-bold uppercase tracking-widest text-warm-bamboo bg-forest-dark/90 px-3 py-1 rounded-full border border-warm-bamboo/30">
                   Madurai Artisan Collective
                 </span>
@@ -192,7 +219,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 3. SCROLL INDICATOR (Bottom Left) & SECTION COUNTER (Bottom Right) */}
+      {/* 3. SCROLL INDICATOR & SECTION COUNTER */}
       <div className="absolute bottom-6 inset-x-0 px-6 sm:px-12 flex items-end justify-between text-sand-300 text-xs z-20 pointer-events-none">
         {/* Left: Scroll to explore with animated vertical line */}
         <div className="flex items-center gap-3 font-semibold uppercase tracking-[0.2em] text-[10px] text-sand-200">
@@ -214,3 +241,4 @@ export default function HeroSection() {
     </section>
   );
 }
+
