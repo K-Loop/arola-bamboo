@@ -122,10 +122,10 @@ export default function HeroSection() {
             </p>
 
             {/* Architectural Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3.5 sm:gap-4 pt-2 w-full sm:w-auto">
               <Link
                 to="/shop"
-                className="px-8 sm:px-9 py-4 bg-warm-bamboo hover:bg-warm-gold text-forest-dark font-bold text-xs sm:text-sm uppercase tracking-[0.18em] shadow-luxury transition-all transform hover:-translate-y-0.5 flex items-center gap-2 group"
+                className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 bg-warm-bamboo hover:bg-warm-gold text-forest-dark font-bold text-xs sm:text-sm uppercase tracking-[0.18em] shadow-luxury transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2 group"
               >
                 <span>Explore Products</span>
                 <ArrowRight className="w-4 h-4 text-forest-dark group-hover:translate-x-1 transition-transform" />
@@ -133,7 +133,7 @@ export default function HeroSection() {
 
               <Link
                 to="/about"
-                className="px-8 sm:px-9 py-4 bg-white/10 hover:bg-white/20 text-sand-50 border border-sand-100/30 font-semibold text-xs sm:text-sm uppercase tracking-[0.18em] backdrop-blur-md transition-all"
+                className="w-full sm:w-auto px-7 sm:px-9 py-3.5 sm:py-4 bg-white/10 hover:bg-white/20 text-sand-50 border border-sand-100/30 font-semibold text-xs sm:text-sm uppercase tracking-[0.18em] backdrop-blur-md transition-all flex items-center justify-center"
               >
                 Discover Our Story
               </Link>
