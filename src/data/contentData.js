@@ -174,13 +174,23 @@ export const teamMembers = [
     name: "Suthagar Selvaraj",
     role: "Founder & Managing Director",
     bio: "Visionary social entrepreneur with deep roots in sustainable materials and rural empowerment. Leading Arola's green construction and institutional partnerships.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    social: {
+      linkedin: "https://www.linkedin.com/in/dharshana-suthagar-056995247/",
+      facebook: "https://www.facebook.com/dharshanabamboocraft",
+      whatsapp: "https://web.whatsapp.com/send?phone=919486755447"
+    }
   },
   {
     name: "Dharshana Selvaraj",
     role: "Co-Founder & Head of Product Design",
     bio: "Product strategist and craft revivalist passionate about converting renewable biomass into luxury lifestyle goods, ergonomic kitchenware, and wellness formulations.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+    social: {
+      linkedin: "https://www.linkedin.com/in/dharshana-suthagar-056995247/",
+      instagram: "https://www.instagram.com/eco_arola",
+      facebook: "https://www.facebook.com/dharshanabamboocraft"
+    }
   },
   {
     name: "M. Meenakshi",

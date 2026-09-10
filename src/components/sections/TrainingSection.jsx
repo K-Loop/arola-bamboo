@@ -44,16 +44,16 @@ export default function TrainingSection({ onOpenTrainingModal }) {
           <div className="lg:col-span-6 space-y-7 order-1 lg:order-2 lg:pl-6">
             <div className="inline-flex items-center gap-2 text-[#4F722A] text-xs font-bold uppercase tracking-[0.35em]">
               <GraduationCap className="w-4 h-4 text-forest" />
-              <span>Arola Skills Academy • Madurai Hub</span>
+              <span>Traditional Bamboo Craft Training • Madurai Hub</span>
             </div>
 
             <h2 className="font-serif text-[clamp(2.5rem,5vw,6rem)] font-bold text-[#171815] leading-[1.04] tracking-tight">
-              LEARN THE CRAFT.<br />
-              <span className="italic font-normal text-[#2A5412]">EMPOWER A GENERATION.</span>
+              TRADITIONAL CRAFT.<br />
+              <span className="italic font-normal text-[#2A5412]">TRAINING YOU CAN TRUST.</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#171815]/80 leading-relaxed font-light">
-              Through structured residential fellowships and vocational village workshops, we train rural women, indigenous tribal youth, and architecture interns in high-precision sustainable bamboo craftsmanship.
+              Join our structured training sessions designed to teach everything from basic techniques to advanced bamboo product creation. Build real-world skills with guidance from industry professionals, rural women self-help collectives, and master craftsmen.
             </p>
 
             <div className="space-y-3 pt-2">
@@ -65,21 +65,21 @@ export default function TrainingSection({ onOpenTrainingModal }) {
               ))}
             </div>
 
-            <div className="pt-4 flex flex-wrap items-center gap-6">
-              <button
-                onClick={onOpenTrainingModal}
-                className="px-9 sm:px-10 py-4 sm:py-4.5 bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-full text-xs uppercase tracking-[0.2em] shadow-luxury transition-all flex items-center gap-2 group cursor-pointer"
-              >
-                <span>Register for Workshop</span>
-                <ArrowRight className="w-4 h-4 text-warm-bamboo group-hover:translate-x-1 transition-transform" />
-              </button>
-
+            <div className="pt-4 flex flex-wrap items-center gap-4 sm:gap-6">
               <Link
                 to="/training"
-                className="text-xs font-bold text-forest hover:text-bamboo-green uppercase tracking-[0.2em]"
+                className="px-8 sm:px-9 py-4 bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-full text-xs uppercase tracking-[0.2em] shadow-luxury transition-all flex items-center gap-2 group cursor-pointer"
               >
-                View Full Curriculum & Calendar →
+                <span>Explore Course</span>
+                <ArrowRight className="w-4 h-4 text-warm-bamboo group-hover:translate-x-1 transition-transform" />
               </Link>
+
+              <button
+                onClick={onOpenTrainingModal}
+                className="px-8 sm:px-9 py-4 rounded-full border-2 border-forest/30 hover:border-forest text-forest font-bold text-xs uppercase tracking-[0.18em] transition-all hover:bg-forest/5 cursor-pointer"
+              >
+                <span>Register for Workshop</span>
+              </button>
             </div>
           </div>
 

@@ -161,9 +161,9 @@ export default function ContactSection() {
                 </div>
               </div>
 
-              <div className="pt-2">
+              <div className="pt-3 space-y-3">
                 <a
-                  href="https://wa.me/919486755447?text=Hello%20Arola%20Bamboo%20Team%2C%20I%20would%20like%20to%20inquire%20about%20your%20products."
+                  href="https://web.whatsapp.com/send?phone=919486755447&text=Hello%20Arola%20Bamboo%20Team%2C%20I%20would%20like%20to%20inquire%20about%20your%20products."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-4 px-5 bg-[#1E3208] hover:bg-[#2C450F] text-sand-50 border border-warm-bamboo/40 rounded-2xl font-bold text-xs uppercase tracking-widest flex items-center justify-center gap-2.5 transition-all shadow-md cursor-pointer"
@@ -171,6 +171,36 @@ export default function ContactSection() {
                   <MessageCircle className="w-4 h-4 text-warm-bamboo" />
                   <span>Instant WhatsApp (+91 94867 55447)</span>
                 </a>
+
+                {/* Social Channels Strip */}
+                <div className="flex items-center justify-center gap-4 pt-1 text-xs">
+                  <a
+                    href="https://www.instagram.com/eco_arola"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D9B77A] hover:text-white transition-colors underline font-medium"
+                  >
+                    Instagram
+                  </a>
+                  <span className="text-white/30">•</span>
+                  <a
+                    href="https://www.facebook.com/dharshanabamboocraft"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D9B77A] hover:text-white transition-colors underline font-medium"
+                  >
+                    Facebook
+                  </a>
+                  <span className="text-white/30">•</span>
+                  <a
+                    href="https://www.linkedin.com/in/dharshana-suthagar-056995247/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#D9B77A] hover:text-white transition-colors underline font-medium"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -132,12 +132,18 @@ export default function Footer() {
               CONNECT
             </span>
             <div className="flex flex-col gap-3 text-xs sm:text-sm text-white/80 font-light">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors">Instagram</a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors">Facebook</a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors">LinkedIn</a>
-              <a href="https://wa.me/919486755447" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors text-[#D9B77A] font-semibold flex items-center gap-1.5 pt-1">
+              <a href="https://www.instagram.com/eco_arola" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors flex items-center gap-1.5">
+                <span>Instagram (@eco_arola)</span>
+              </a>
+              <a href="https://www.facebook.com/dharshanabamboocraft" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors flex items-center gap-1.5">
+                <span>Facebook (Dharshana Bamboo)</span>
+              </a>
+              <a href="https://www.linkedin.com/in/dharshana-suthagar-056995247/" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors flex items-center gap-1.5">
+                <span>LinkedIn (Dharshana Suthagar)</span>
+              </a>
+              <a href="https://web.whatsapp.com/send?phone=919486755447" target="_blank" rel="noopener noreferrer" className="hover:text-[#D9B77A] transition-colors text-[#D9B77A] font-semibold flex items-center gap-1.5 pt-1">
                 <MessageCircle className="w-4 h-4" />
-                <span>Direct WhatsApp</span>
+                <span>WhatsApp (+91 94867 55447)</span>
               </a>
             </div>
           </div>

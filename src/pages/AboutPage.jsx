@@ -143,6 +143,41 @@ export default function AboutPage() {
                   <p className="text-xs sm:text-sm text-[#171815]/70 mt-3 leading-relaxed font-light">
                     {member.bio}
                   </p>
+
+                  {member.social && (
+                    <div className="flex items-center gap-2.5 pt-4 mt-3 border-t border-natural-sand/60">
+                      {member.social.linkedin && (
+                        <a
+                          href={member.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 rounded-full bg-sand-100 hover:bg-[#1E3208] text-[#1E3208] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-colors"
+                        >
+                          LinkedIn
+                        </a>
+                      )}
+                      {member.social.instagram && (
+                        <a
+                          href={member.social.instagram}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 rounded-full bg-sand-100 hover:bg-[#1E3208] text-[#1E3208] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-colors"
+                        >
+                          Instagram
+                        </a>
+                      )}
+                      {member.social.facebook && (
+                        <a
+                          href={member.social.facebook}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 py-1 rounded-full bg-sand-100 hover:bg-[#1E3208] text-[#1E3208] hover:text-white text-[10px] font-bold uppercase tracking-wider transition-colors"
+                        >
+                          Facebook
+                        </a>
+                      )}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
