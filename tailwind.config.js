@@ -113,6 +113,12 @@ export default {
         'premium': '0 20px 50px -10px rgba(30, 50, 8, 0.15)',
         'soft': '0 10px 30px -5px rgba(23, 24, 21, 0.06)',
       },
+      spacing: {
+        '4.5': '1.125rem',
+        '5.5': '1.375rem',
+        '18': '4.5rem',
+        '22': '5.5rem',
+      },
       transitionTimingFunction: {
         'editorial': 'cubic-bezier(0.16, 1, 0.3, 1)',
       }

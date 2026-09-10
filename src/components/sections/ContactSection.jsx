@@ -102,13 +102,15 @@ export default function ContactSection() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-4.5 bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-2xl text-xs sm:text-sm uppercase tracking-[0.2em] shadow-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.99]"
-                >
-                  <Send className="w-4 h-4 text-warm-bamboo" />
-                  <span>Send Message Directly →</span>
-                </button>
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    className="w-full py-4 px-6 bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-2xl text-xs sm:text-sm uppercase tracking-[0.2em] shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.99]"
+                  >
+                    <Send className="w-4 h-4 text-warm-bamboo shrink-0" />
+                    <span>Send Message Directly →</span>
+                  </button>
+                </div>
               </form>
             )}
           </div>
