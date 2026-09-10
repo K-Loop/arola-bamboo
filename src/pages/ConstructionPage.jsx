@@ -352,13 +352,15 @@ export default function ConstructionPage() {
                   />
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-4.5 bg-[#1E3208] hover:bg-[#2C450F] text-white font-bold rounded-2xl text-xs sm:text-sm uppercase tracking-[0.2em] shadow-xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.99]"
-                >
-                  <Send className="w-4 h-4 text-[#D9B77A]" />
-                  <span>Submit Architectural Consultation Request →</span>
-                </button>
+                <div className="pt-3">
+                  <button
+                    type="submit"
+                    className="w-full py-4 px-6 min-h-[54px] bg-[#1E3208] hover:bg-[#2C450F] text-white font-bold rounded-2xl text-xs sm:text-sm uppercase tracking-[0.2em] shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.99]"
+                  >
+                    <Send className="w-4 h-4 text-[#D9B77A] shrink-0" />
+                    <span>Submit Architectural Consultation Request →</span>
+                  </button>
+                </div>
               </form>
             )}
           </div>

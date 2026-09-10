@@ -255,9 +255,9 @@ export default function CheckoutModal({ isOpen, onClose }) {
 
                   <button
                     type="submit"
-                    className="py-3 px-6 bg-bamboo-700 hover:bg-bamboo-800 text-sand-50 rounded-xl font-bold text-xs uppercase tracking-wider shadow-sm transition-all flex items-center gap-2"
+                    className="py-3.5 px-6 min-h-[48px] bg-forest hover:bg-forest-light text-sand-50 rounded-xl font-bold text-xs uppercase tracking-wider shadow-md transition-all flex items-center gap-2 cursor-pointer active:scale-[0.99]"
                   >
-                    <ShieldCheck className="w-4 h-4 text-warm-400" />
+                    <ShieldCheck className="w-4 h-4 text-warm-bamboo shrink-0" />
                     <span>Confirm & Pay ₹{grandTotal}</span>
                   </button>
                 </div>

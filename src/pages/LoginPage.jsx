@@ -189,13 +189,15 @@ export default function LoginPage() {
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-4.5 bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-2xl text-xs uppercase tracking-[0.2em] shadow-luxury transition-all flex items-center justify-center gap-2.5 pt-2 mt-4"
-                >
-                  <span>{isRegisterTab ? 'Register Account' : 'Sign In to Portal'}</span>
-                  <ArrowRight className="w-4 h-4 text-warm-bamboo" />
-                </button>
+                <div className="pt-3 mt-4">
+                  <button
+                    type="submit"
+                    className="w-full py-4 px-6 min-h-[52px] bg-forest hover:bg-forest-light text-sand-50 font-bold rounded-2xl text-xs uppercase tracking-[0.2em] shadow-luxury transition-all flex items-center justify-center gap-2.5 cursor-pointer active:scale-[0.99]"
+                  >
+                    <span>{isRegisterTab ? 'Register Account' : 'Sign In to Portal'}</span>
+                    <ArrowRight className="w-4 h-4 text-warm-bamboo" />
+                  </button>
+                </div>
               </form>
             </div>
           )}

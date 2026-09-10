@@ -170,12 +170,12 @@ export default function CustomGiftingModal({ isOpen, onClose }) {
                   />
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-3">
                   <button
                     type="submit"
-                    className="w-full py-3 px-6 bg-bamboo-700 hover:bg-bamboo-800 text-sand-50 rounded-xl font-semibold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm transition-all"
+                    className="w-full py-3.5 px-6 min-h-[48px] bg-forest hover:bg-forest-light text-sand-50 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer active:scale-[0.99]"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 text-warm-bamboo shrink-0" />
                     <span>Submit Gifting Inquiry</span>
                   </button>
                 </div>
