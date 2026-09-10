@@ -17,6 +17,7 @@ import ScrollToTopButton from './components/common/ScrollToTopButton';
 import CheckoutModal from './components/common/CheckoutModal';
 import CustomCursor from './components/common/CustomCursor';
 import SmoothScroll from './components/common/SmoothScroll';
+import IntroScreen from './components/common/IntroScreen';
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -39,6 +40,9 @@ function AppContent() {
 
   return (
     <div className="flex flex-col min-h-screen bg-warm-white text-charcoal font-sans selection:bg-forest selection:text-white">
+      {/* Cinematic Brand Intro Screen */}
+      <IntroScreen />
+
       <ScrollToTop />
       <ScrollToTopButton />
       <CustomCursor />
